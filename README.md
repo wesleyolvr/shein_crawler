@@ -15,8 +15,8 @@ Para instalar e usar o Crawler Shein, siga as instruções detalhadas abaixo:
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/crawler-shein.git
-    cd crawler-shein
+    git clone https://github.com/wesleyolvr/shein_crawler.git
+    cd shein_crawler
     ```
 
 2. Construa a imagem Docker:

@@ -39,6 +39,7 @@ class DatabaseManager:
                 return None
         else:
             # Cria um novo produto se o product_id não existe
+            self.log.info(f'Creating new product {product_data["data_title"]}')
             new_product = Product(**product_data)
             self.session.add(new_product)
             self.session.commit()

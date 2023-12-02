@@ -11,7 +11,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from db.db_manager import DatabaseManager
 
 
@@ -20,8 +20,8 @@ db_manager = DatabaseManager()
 class SheinCrawler:
     def __init__(self):
         self.options = Options()
-        self.options.add_argument("--headless")
-        self.options.binary_location = "/usr/bin/chromedriver"
+        # self.options.add_argument("--headless")
+        # self.options.binary_location = "/usr/bin/chromedriver"
         self.driver = webdriver.Chrome(options=self.options)
         self.log = CustomLogger()
         self.url_base = "https://br.shein.com/"

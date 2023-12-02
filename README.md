@@ -31,6 +31,30 @@ Para instalar e usar o Crawler Shein, siga as instruções detalhadas abaixo:
     docker run -it crawler-shein
     ```
 
+Pra rodar o projeto localmente:
+1. Crie um ambiente virtual:
+
+    ```bash
+    python -m venv venv
+    ```
+2. Ativa o ambiente virtual:
+    
+    ```bash
+    .\venv\Scripts\activate
+    ```
+
+3. Instale as dependências:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Execute o projeto localmente:
+
+    ```bash
+    python main.py
+    ```
+
 ## Uso
 
 Após executar o container Docker, o projeto será iniciado automaticamente. Os dados extraídos serão armazenados em um banco de dados SQLite.

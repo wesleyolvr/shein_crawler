@@ -1,70 +1,95 @@
 # Crawler Shein
 
-O **Crawler Shein** é um projeto de Web Scraping desenvolvido para extrair informações detalhadas de produtos do site Shein. Automatizando a coleta de dados, o projeto visa criar um histórico de preços para análises detalhadas das variações ao longo do tempo. 🕵️‍♂️📈
+Bem-vindo ao projeto de web scraping automatizado do site Shein! Este projeto foi desenvolvido para automatizar a extração de dados de produtos do site Shein, armazená-los em um banco de dados SQLite, validar os dados utilizando o Pydantic e disponibilizar uma API para gerenciar os endpoints da aplicação. 🕵️‍♂️📈
 
 ## Funcionalidades
 
-- **Web Scraping Automatizado:** Utiliza Selenium para automatizar a navegação e extração de dados do site Shein. 🌐🤖
+- **Web Scraping Automatizado:** Utiliza Selenium para automatizar a navegação e extração de dados de produtos do site Shein. 🌐🤖
 - **Armazenamento em Banco de Dados:** Utiliza um banco de dados SQLite para armazenar os dados extraídos. 🗃️📊
+- **Validação de Dados com Pydantic:** Utiliza o Pydantic para validar os dados extraídos antes de armazená-los no banco de dados. ⚙️🔍
+- **API FastAPI:** Disponibiliza uma API utilizando o FastAPI para gerenciar os endpoints da aplicação. 🚀🔌
+
 
 ## Instalação
-Antes de começar, certifique-se de ter o Python e o Docker instalados no seu sistema.
 
-Para instalar e usar o Crawler Shein, siga as instruções detalhadas abaixo:
+Para executar este projeto em sua máquina local, siga os passos abaixo:
 
-1. Clone o repositório:
+1. **Clone o repositório**:
+   ```sh
+   git clone https://github.com/wesleyolvr/shein_crawler.git
+   ```
 
-    ```bash
-    git clone https://github.com/wesleyolvr/shein_crawler.git
-    cd shein_crawler
-    ```
+2. **Crie e Ative um Ambiente Virtual**:
+   - No terminal, navegue até o diretório do seu projeto:
+     ```sh
+     cd /path/to/your/project
+     ```
+   - Crie um ambiente virtual:
+     ```sh
+     python -m venv venv
+     ```
+   - Ative o ambiente virtual:
+     - No Windows:
+     ```sh
+       venv\Scripts\activate
+     ```
+     - No macOS/Linux:
+     ```sh
+       source venv/bin/activate
+     ```
 
-2. Construa a imagem Docker:
+3. **Ajuste o arquivo de configuração**:
+   Renomeie o arquivo `config_sample.ini` para `config.ini` e insira as informações do banco de dados e do Kafka conforme necessário.
 
-    ```bash
-    docker build -t crawler-shein .
-    ```
+4. **Inicie o Kafka e o Zookeeper**:
+   Siga as instruções para iniciar o Apache Kafka e o Apache Zookeeper conforme documentado [aqui](https://github.com/wesleyolvr/shein_crawler/blob/feature/crawler_api_kafka/kafka-zookeeper.md).
 
-3. Execute o container Docker:
-
-    ```bash
-    docker run -it crawler-shein
-    ```
-
-Pra rodar o projeto localmente:
-1. Crie um ambiente virtual:
-
-    ```bash
-    python -m venv venv
-    ```
-2. Ativa o ambiente virtual:
-    
-    ```bash
-    .\venv\Scripts\activate
-    ```
-
-3. Instale as dependências:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Execute o projeto localmente:
-
-    ```bash
-    python main.py
-    ```
+5. **Inicie a API FastAPI e o consumidor Kafka**:
+   ```sh
+   python start.py
+   ```
+6. **Inicie o script do Crawler:**
+   ```sh
+   python crawler/shein_crawler.py
+   ```
 
 ## Uso
 
-Após executar o container Docker, o projeto será iniciado automaticamente. Os dados extraídos serão armazenados em um banco de dados SQLite.
+Depois de seguir as etapas de instalação, a API estará disponível em `http://localhost:8000` e você pode acessar a documentação interativa do Swagger em `http://localhost:8000/docs`.
+
+### Endpoints disponíveis:
+
+- **`/produtos`**: Lista todos os produtos extraídos do site Shein.
+- **`/produtos/{product_id}`**: Retorna um produto específico pelo ID.
+
+## Contribuição
+
+Se você deseja contribuir com melhorias para este projeto, siga as diretrizes abaixo:
+
+1. Crie uma nova branch:
+   ```sh
+   git checkout -b feature-nova-funcionalidade
+   ```
+
+2. Faça suas alterações e commit:
+   ```sh
+   git commit -am 'Adiciona nova funcionalidade'
+   ```
+
+3. Envie para o GitHub:
+   ```sh
+   git push origin feature-nova-funcionalidade
+   ```
+
+4. Crie um novo Pull Request e aguarde a revisão.
+
 
 ## Próximos Passos
 
 - **Análise de Dados:** Implementar funcionalidades para consumir os dados do banco e realizar análises de tendências de preços. 📉📊
 - **Serviço de Comparação de Preços:** Desenvolver um serviço que compara os preços atuais dos produtos com seus históricos para identificar oportunidades de compra. 💰🔍
 
-## Contribuições
 
-Contribuições são bem-vindas! 
-Se você tem sugestões, abra uma [issue](https://github.com/wesleyolvr/shein_crawler/issues) ou envie um [pull request](https://github.com/wesleyolvr/shein_crawler/pulls) para melhorar o projeto. 🚀🤝
+## Licença
+
+Este projeto é licenciado sob a [MIT License](https://opensource.org/licenses/MIT) - veja o arquivo [LICENSE](https://github.com/seu-usuario/nome-do-projeto/blob/main/LICENSE) para mais detalhes. 🚀🤝

@@ -1,36 +1,22 @@
-from db.db_manager import Base
-from sqlalchemy import  Column, String, Float, DateTime, ForeignKey, Integer
-from sqlalchemy.orm import  relationship
-from sqlalchemy import func
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
+from config import DATABASE_URL
 
-class Product(Base):
-    __tablename__ = 'products'
+# Configuração do Banco de Dados
+engine = create_engine(DATABASE_URL)
 
-    product_id = Column(Integer, primary_key=True)  # Assumindo que o ID do produto é uma string
-    href = Column(String)
-    data_title = Column(String)
-    data_price = Column(Float)
-    data_id_category = Column(String)
-    data_sku = Column(String)
-    data_spu = Column(String)
-    data_us_price = Column(Float)
-    data_us_origin_price = Column(Float)
-    discount = Column(String)
-    image_src = Column(String)
-    product_type = Column(String)
-    
+# Criando uma Sessão do Banco de Dados
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-    # Relacionamento com o histórico de preços
-    price_history = relationship('PriceHistory', back_populates='product')
+# Base para Declaração de Modelos
+Base = declarative_base()
 
-class PriceHistory(Base):
-    __tablename__ = 'price_history'
-
-    id = Column(Integer, autoincrement=True, primary_key=True)
-    date = Column(DateTime, default=func.now())
-    price = Column(Float)
-
-    # Chave estrangeira para o produto
-    product_id = Column(String, ForeignKey('products.product_id'))
-    product = relationship('Product', back_populates='price_history')
+# Função para Obter uma Sessão do Banco de Dados
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

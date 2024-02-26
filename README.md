@@ -8,7 +8,7 @@ Bem-vindo ao projeto de web scraping automatizado do site Shein! Este projeto fo
 - **Armazenamento em Banco de Dados:** Utiliza um banco de dados SQLite para armazenar os dados extraídos. 🗃️📊
 - **Validação de Dados com Pydantic:** Utiliza o Pydantic para validar os dados extraídos antes de armazená-los no banco de dados. ⚙️🔍
 - **API FastAPI:** Disponibiliza uma API utilizando o FastAPI para gerenciar os endpoints da aplicação. 🚀🔌
-- **Apache Kafka para Comunicação Entre Módulos:** Utiliza o Apache Kafka para permitir a comunicação assíncrona e distribuída entre os módulos do projeto, como o crawler, API e Banco de dados. 📡🔗
+- **Apache Kafka:** Utiliza o Apache Kafka para permitir a comunicação assíncrona e distribuída entre os módulos do projeto, como o crawler, API e Banco de dados. 📡🔗
 
 ## Instalação
 

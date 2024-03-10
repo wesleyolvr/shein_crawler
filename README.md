@@ -85,7 +85,7 @@ Se você deseja contribuir com melhorias para este projeto, siga as diretrizes a
 
 
 ## Próximos Passos
-
+- **Substituição do Selenium pelo Scrapy:** Estou atualmente trabalhando para substituir o Selenium pelo Scrapy, a fim de aumentar a eficiência da extração de dados e possibilitar uma raspagem de dados escalável com mais facilidade. Isso permitirá a obtenção de uma maior quantidade de dados de forma mais rápida e eficiente.
 - **Análise de Dados:** Implementar funcionalidades para consumir os dados do banco e realizar análises de tendências de preços. 📉📊
 - **Serviço de Comparação de Preços:** Desenvolver um serviço que compara os preços atuais dos produtos com seus históricos para identificar oportunidades de compra. 💰🔍
 
